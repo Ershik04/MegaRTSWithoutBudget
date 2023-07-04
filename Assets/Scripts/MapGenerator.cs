@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private int _linesSize;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < _tilesLinesCount; i++)
         {
