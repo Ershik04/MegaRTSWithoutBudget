@@ -17,9 +17,9 @@ public class CityGenerator : MonoBehaviour
 
     private void Start()
     {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Grass");
         for (int i = 0; i < _citiesCount; i++)
         {
-            GameObject[] tiles = GameObject.FindGameObjectsWithTag("Grass");
             _tile = tiles[Random.Range(0, tiles.Length)];
             float xposition = Random.Range(-_tileSize, _tileSize);
             float zposition = Random.Range(-_tileSize, _tileSize);

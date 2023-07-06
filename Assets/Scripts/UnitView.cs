@@ -22,6 +22,10 @@ public class UnitView : MonoBehaviour
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ChooseUnit>();
+        _image = GameObject.FindGameObjectWithTag("UnitImage").GetComponent<Image>();
+        _label = GameObject.FindGameObjectWithTag("UnitName").GetComponent<TMP_Text>();
+        _health = GameObject.FindGameObjectWithTag("UnitHealth").GetComponent<TMP_Text>();
+        _description = GameObject.FindGameObjectWithTag("UnitDescription").GetComponent<TMP_Text>();
     }
 
     public void Initialize(UnitsData unitsData)

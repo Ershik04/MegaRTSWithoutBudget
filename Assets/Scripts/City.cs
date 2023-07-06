@@ -12,14 +12,4 @@ public class City : MonoBehaviour
 
     public int CityFoodCount => _cityFoodCount;
     public int CityPowerCount => _cityPowerCount;
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
 }

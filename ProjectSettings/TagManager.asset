@@ -10,6 +10,12 @@ TagManager:
   - DisbandButton
   - City
   - CityNameText
+  - CityPanel
+  - UnitImage
+  - UnitName
+  - UnitHealth
+  - UnitDescription
+  - DestroyCityButton
   layers:
   - Default
   - TransparentFX
