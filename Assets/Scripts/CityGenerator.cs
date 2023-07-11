@@ -14,6 +14,10 @@ public class CityGenerator : MonoBehaviour
     private GameObject _tile;
     [SerializeField]
     private CityNameGenerator _cityNameGenerator;
+    [SerializeField]
+    private List<GameObject> _cities;
+
+    public List<GameObject> Cities => _cities;
 
     private void Start()
     {
@@ -28,6 +32,7 @@ public class CityGenerator : MonoBehaviour
             city.AddComponent<City>();
             city.tag = "City";
             _cityNameGenerator.AddCity(city);
+            _cities.Add(city);
         }
         _cityNameGenerator.GenerateCitiesNames();
     }

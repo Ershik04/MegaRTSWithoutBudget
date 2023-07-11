@@ -16,6 +16,7 @@ TagManager:
   - UnitHealth
   - UnitDescription
   - DestroyCityButton
+  - Generator
   layers:
   - Default
   - TransparentFX
