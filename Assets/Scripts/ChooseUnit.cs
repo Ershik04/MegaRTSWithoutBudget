@@ -11,6 +11,8 @@ public class ChooseUnit : MonoBehaviour
     private MousePosition _unit;
     [SerializeField]
     private Button _disbandButton;
+    [SerializeField]
+    private GameObject _unitPanel;
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class ChooseUnit : MonoBehaviour
     {
         MousePosition mousePosition;
         _gameUnit = gameUnit;
+        _unitPanel = _gameUnit.UnitMenu;
         mousePosition = _gameUnit.GetComponent<MousePosition>();
         _unit = mousePosition;
     }
@@ -38,6 +41,7 @@ public class ChooseUnit : MonoBehaviour
     {
         if (_gameUnit != null)
         {
+            _unitPanel.SetActive(false);
             Destroy(_gameUnit.gameObject);
             _gameUnit = null;
         }

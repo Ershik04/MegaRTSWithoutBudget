@@ -9,10 +9,12 @@ public class DisbandButton : MonoBehaviour
     private Button _button;
     [SerializeField]
     private GameObject _unit;
+    [SerializeField]
+    private GameObject _unitPanel;
 
     private void Start()
     {
-        _button.onClick.AddListener(DisbandUnit);
+        
     }
     
     private void DisbandUnit()

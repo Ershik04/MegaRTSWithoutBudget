@@ -17,6 +17,8 @@ TagManager:
   - UnitDescription
   - DestroyCityButton
   - Generator
+  - CityFoodCount
+  - UnitPanel
   layers:
   - Default
   - TransparentFX

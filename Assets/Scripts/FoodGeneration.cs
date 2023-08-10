@@ -9,45 +9,33 @@ public class FoodGeneration : MonoBehaviour
     [SerializeField]
     private int _foodCount;
     [SerializeField]
-    private float _maxDistance;
-    [SerializeField]
     private City _city;
     [SerializeField]
-    private CityGenerator _cityGenerator;
+    private float _timer;
+    [SerializeField]
+    private float _maxTimer;
 
     private void Start()
     {
-        _cityGenerator = GameObject.FindGameObjectWithTag("Generator").GetComponent<CityGenerator>();
-        FindCity();
-        if (_city != null)
+        _city = GetComponentInParent<City>();
+    }
+
+    private void Update()
+    {
+        if (_timer > 0)
         {
-            StartCoroutine(GenerateFood());
+            _timer -= Time.deltaTime;
+        }
+        if (_city != null && _timer <= 0)
+        {
+            GenerateFood();
+            _timer = _maxTimer;
         }
     }
 
-    private void FindCity()
+    private void GenerateFood()
     {
-        for (int i = 0; 0 < _cityGenerator.Cities.Count; i++)
-        {
-            _city = _cityGenerator.Cities[i].GetComponent<City>();
-            float position = Vector3.Distance(transform.position, _city.transform.position);
-            if (position <= _maxDistance)
-            {
-                print(1);
-                _city = _cityGenerator.Cities[i].GetComponent<City>();
-                return;
-            }
-            else
-            {
-                print(2);
-                FindCity();
-            }
-        }
-    }
-
-    private IEnumerator GenerateFood()
-    {
-        print(3);
-        yield return new WaitForSeconds(1);
+        _city.AddFood(_foodCount);
+        print("Еда произведена");
     }
 }

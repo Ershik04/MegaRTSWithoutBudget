@@ -9,6 +9,8 @@ public class CityView : MonoBehaviour
     [SerializeField]
     private TMP_Text _label;
     [SerializeField]
+    private TMP_Text _cityFoodCount;
+    [SerializeField]
     private City _city;
     [SerializeField]
     private GameObject _cityMenu;
@@ -21,12 +23,14 @@ public class CityView : MonoBehaviour
         _city = gameObject.GetComponent<City>();
         _cityMenu = GameObject.FindGameObjectWithTag("CityPanel");
         _label = GameObject.FindGameObjectWithTag("CityNameText").GetComponent<TMP_Text>();
+        _cityFoodCount = GameObject.FindGameObjectWithTag("CityFoodCount").GetComponent<TMP_Text>();
     }
 
     private void OnMouseDown()
     {
         _cityMenu.SetActive(true);
         _label.text = _city.CityName;
+        _cityFoodCount.text = _city.CityFoodCount.ToString();
         _player.SaveCity(_city);
     }
 }
