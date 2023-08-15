@@ -14,20 +14,29 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private FoodGeneration _farm;
     [SerializeField]
+    private ProductionGeneration _factory;
+    [SerializeField]
     private float _maxDistance;
     [SerializeField]
     private float _minDistance;
     [SerializeField]
     private int _maxFarmsCount;
     [SerializeField]
+    private int _maxFactoriesCount;
+    [SerializeField]
     private GameObject _cityPanel;
     [SerializeField]
     private GameObject _unitPanel;
+    [SerializeField]
+    private CompleteResearches _completeResearches;
+    [SerializeField]
+    private ResearchesData _factoriesResearch;
 
     private void Start()
     {
         _cityPanel = GameObject.FindGameObjectWithTag("CityPanel");
         _unitPanel = GameObject.FindGameObjectWithTag("UnitPanel");
+        _completeResearches = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CompleteResearches>();
         _destroyCityButton = GameObject.FindGameObjectWithTag("DestroyCityButton").GetComponent<Button>();
         _destroyCityButton.onClick.AddListener(DestroyCity);
     }
@@ -51,7 +60,6 @@ public class ChooseCity : MonoBehaviour
     {
         Vector3 offset = new Vector3(2.5f, 0, 0);
         GameUnit gameUnit = Instantiate(_builder, _city.transform.position + offset, _city.transform.rotation);
-        gameUnit.SetUnitMenu(_unitPanel);
     }
 
     public void CreateFarm()
@@ -66,7 +74,30 @@ public class ChooseCity : MonoBehaviour
         } 
         else
         {
-            print("Слишком много ферм");
+            print("Слишком много ферм в городе " + _city.CityName);
+        }
+    }
+
+    public void CreateFactory()
+    {
+        for (int i = 0; i < _completeResearches.Researches.Count; i++)
+        {
+            if (_completeResearches.Researches[i] == _factoriesResearch)
+            {
+                if (_city.Factories.Count < _maxFactoriesCount)
+                {
+                    float positionx = Random.Range(Random.Range(_minDistance, _maxDistance), Random.Range(-_minDistance, -_maxDistance));
+                    float positionz = Random.Range(Random.Range(_minDistance, _maxDistance), Random.Range(-_minDistance, -_maxDistance));
+                    Vector3 offset = new Vector3(positionx, 0, positionz);
+                    ProductionGeneration factory = Instantiate(_factory, _city.transform.position + offset, _city.transform.rotation, _city.transform);
+                    _city.AddFactory(factory);
+                }
+                else
+                {
+                    print("Слишком много фабрик в городе " + _city.CityName);
+                }
+                return;
+            }
         }
     }
 }

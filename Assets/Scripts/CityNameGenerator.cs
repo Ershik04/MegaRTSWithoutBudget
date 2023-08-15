@@ -43,4 +43,23 @@ public class CityNameGenerator : MonoBehaviour
             _output = "";
         }
     }
+
+    public void GenerateCityName(GameObject city)
+    {
+        int i = Random.Range(_minCityNameLength, _maxCityNameLength);
+        for (int a = 0; a < i; a++)
+        {
+            int b = Random.Range(0, 2);
+            if (b == 0)
+            {
+                _output += _vowels[Random.Range(0, _vowels.Length)];
+            }
+            else
+            {
+                _output += _consonants[Random.Range(0, _consonants.Length)];
+            }
+        }
+        city.GetComponent<City>().CityName = _output;
+        _output = "";
+    }
 }

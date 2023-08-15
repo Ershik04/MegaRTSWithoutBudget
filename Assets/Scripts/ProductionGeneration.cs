@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodGeneration : MonoBehaviour
+public class ProductionGeneration : MonoBehaviour
 {
     [SerializeField]
-    private int _foodCount;
+    private int _productionCount;
     [SerializeField]
     private City _city;
     [SerializeField]
@@ -26,14 +26,14 @@ public class FoodGeneration : MonoBehaviour
         }
         if (_city != null && _timer <= 0)
         {
-            GenerateFood();
+            GenerateProduction();
             _timer = _maxTimer;
         }
     }
 
-    private void GenerateFood()
+    private void GenerateProduction()
     {
-        _city.AddFood(_foodCount);
-        print("Еда произведена в городе " + _city.CityName);
+        _city.AddProduction(_productionCount);
+        print("Продукт произведён в городе " + _city.CityName);
     }
 }

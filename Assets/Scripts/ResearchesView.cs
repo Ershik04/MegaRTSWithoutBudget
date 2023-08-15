@@ -13,15 +13,19 @@ public class ResearchesView : MonoBehaviour
     [SerializeField]
     private TMP_Text _description;
     [SerializeField]
-    private Button _researchButton;
+    private Button _descriptionResearchButton;
+    [SerializeField]
+    private ResearchButton _researchButton;
 
     private void Start()
     {
-        _researchButton.onClick.AddListener(InitializeResearch);
+        _researchButton = GameObject.FindGameObjectWithTag("ResearchButton").GetComponent<ResearchButton>();
+        _descriptionResearchButton.onClick.AddListener(InitializeResearch);
     }
 
     public void InitializeResearch()
     {
+        _researchButton.SetResearch(_data);
         _label.text = _data.ResearchName;
         _description.text = _data.ResearchDescription;
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChooseUnit : MonoBehaviour
 {
@@ -12,10 +13,20 @@ public class ChooseUnit : MonoBehaviour
     [SerializeField]
     private Button _disbandButton;
     [SerializeField]
-    private GameObject _unitPanel;
+    private TMP_Text _label;
+    [SerializeField]
+    private TMP_Text _health;
+    [SerializeField]
+    private TMP_Text _description;
+    [SerializeField]
+    private Image _image;
 
     private void Start()
     {
+        _image = GameObject.FindGameObjectWithTag("UnitImage").GetComponent<Image>();
+        _label = GameObject.FindGameObjectWithTag("UnitName").GetComponent<TMP_Text>();
+        _health = GameObject.FindGameObjectWithTag("UnitHealth").GetComponent<TMP_Text>();
+        _description = GameObject.FindGameObjectWithTag("UnitDescription").GetComponent<TMP_Text>();
         _disbandButton = GameObject.FindGameObjectWithTag("DisbandButton").GetComponent<Button>();
         _disbandButton.onClick.AddListener(DisbandUnit);
     }
@@ -32,7 +43,6 @@ public class ChooseUnit : MonoBehaviour
     {
         MousePosition mousePosition;
         _gameUnit = gameUnit;
-        _unitPanel = _gameUnit.UnitMenu;
         mousePosition = _gameUnit.GetComponent<MousePosition>();
         _unit = mousePosition;
     }
@@ -41,7 +51,10 @@ public class ChooseUnit : MonoBehaviour
     {
         if (_gameUnit != null)
         {
-            _unitPanel.SetActive(false);
+            _image.sprite = null;
+            _label.text = "";
+            _health.text = "";
+            _description.text = "";
             Destroy(_gameUnit.gameObject);
             _gameUnit = null;
         }

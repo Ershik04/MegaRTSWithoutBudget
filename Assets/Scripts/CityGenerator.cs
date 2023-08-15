@@ -31,9 +31,14 @@ public class CityGenerator : MonoBehaviour
             GameObject city = Instantiate(_template, position, gameObject.transform.rotation);
             city.AddComponent<City>();
             city.tag = "City";
+            AddCity(city);
             _cityNameGenerator.AddCity(city);
-            _cities.Add(city);
         }
         _cityNameGenerator.GenerateCitiesNames();
+    }
+
+    public void AddCity(GameObject city)
+    {
+        _cities.Add(city);
     }
 }

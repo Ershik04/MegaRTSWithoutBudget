@@ -19,6 +19,9 @@ TagManager:
   - Generator
   - CityFoodCount
   - UnitPanel
+  - ResearchButton
+  - CityProductionCount
+  - CityNameGenerator
   layers:
   - Default
   - TransparentFX
