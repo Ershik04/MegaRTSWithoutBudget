@@ -22,6 +22,7 @@ TagManager:
   - ResearchButton
   - CityProductionCount
   - CityNameGenerator
+  - SavesGenerator
   layers:
   - Default
   - TransparentFX

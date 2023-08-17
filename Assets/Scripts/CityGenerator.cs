@@ -16,11 +16,14 @@ public class CityGenerator : MonoBehaviour
     private CityNameGenerator _cityNameGenerator;
     [SerializeField]
     private List<GameObject> _cities;
+    [SerializeField]
+    private SaveData _playerPrefs;
 
     public List<GameObject> Cities => _cities;
 
     private void Start()
     {
+        _playerPrefs = GameObject.FindGameObjectWithTag("SavesGenerator").GetComponent<SaveData>();
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Grass");
         for (int i = 0; i < _citiesCount; i++)
         {
@@ -40,5 +43,23 @@ public class CityGenerator : MonoBehaviour
     public void AddCity(GameObject city)
     {
         _cities.Add(city);
+    }
+
+    public void SaveCityData()
+    {
+        for (int c = 0; c < _cities.Count; c++)
+        {
+            _playerPrefs.SaveCityPosition(_cities[c].GetComponent<City>());
+            _cityNameGenerator.SaveCitiesNames(c);
+        }
+    }
+
+    public void LoadCitiesData()
+    {
+        for (int c = 0; c < _cities.Count; c++)
+        {
+            _cities[c].transform.position = _playerPrefs.LoadCityPosition();
+            _cityNameGenerator.LoadCitiesNames(c);
+        }
     }
 }

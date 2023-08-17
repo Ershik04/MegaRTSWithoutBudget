@@ -16,6 +16,13 @@ public class CityNameGenerator : MonoBehaviour
     private int _maxCityNameLength;
     [SerializeField]
     private string _output;
+    [SerializeField]
+    private SaveData _playerPrefs;
+
+    private void Start()
+    {
+        _playerPrefs = GameObject.FindGameObjectWithTag("SavesGenerator").GetComponent<SaveData>();
+    }
 
     public void AddCity(GameObject city)
     {
@@ -61,5 +68,16 @@ public class CityNameGenerator : MonoBehaviour
         }
         city.GetComponent<City>().CityName = _output;
         _output = "";
+    }
+
+    public void SaveCitiesNames(int i)
+    {
+        _playerPrefs.SaveCityName(_cities[i].GetComponent<City>());
+    }
+
+    public void LoadCitiesNames(int i)
+    {
+        _output = _playerPrefs.LoadCityName();
+        _cities[i].GetComponent<City>().CityName = _output;
     }
 }
