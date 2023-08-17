@@ -23,6 +23,7 @@ TagManager:
   - CityProductionCount
   - CityNameGenerator
   - SavesGenerator
+  - Canvas
   layers:
   - Default
   - TransparentFX

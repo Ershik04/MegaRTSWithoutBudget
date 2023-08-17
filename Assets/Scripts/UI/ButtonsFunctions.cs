@@ -15,9 +15,18 @@ public class ButtonsFunctions : MonoBehaviour
     [SerializeField]
     private GameObject _menuPanel;
     [SerializeField]
+    private GameObject _builderPanel;
+    [SerializeField]
     private bool _researchPanelOpen;
     [SerializeField]
     private bool _menuOpen;
+    [SerializeField]
+    private GameObject _player;
+
+    private void Start()
+    {
+        _player = GameObject.FindGameObjectWithTag("MainCamera");
+    }
 
     private void Update()
     {
@@ -87,8 +96,33 @@ public class ButtonsFunctions : MonoBehaviour
         _menuOpen = false;
     }
 
+    public void OpenBuilderPanel()
+    {
+        _builderPanel.SetActive(true);
+    }
+
+    public void CloseBuilderPanel()
+    {
+        _builderPanel.SetActive(false);
+    }
+
+    public void BuildCity()
+    {
+        ChooseUnit chooseUnit = _player.GetComponent<ChooseUnit>();
+        if (chooseUnit.ChoosedUnit != null)
+        {
+            Builder builder;
+            bool isBuilder;
+            isBuilder = chooseUnit.ChoosedUnit.TryGetComponent<Builder>(out builder);
+            if (isBuilder)
+            {
+                builder.BuildCity();
+            }
+        }
+    }
+
     public void Quit()
     {
-
+        Application.Quit();
     }
 }

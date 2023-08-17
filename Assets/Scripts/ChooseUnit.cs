@@ -21,6 +21,8 @@ public class ChooseUnit : MonoBehaviour
     [SerializeField]
     private Image _image;
 
+    public GameUnit ChoosedUnit => _gameUnit;
+
     private void Start()
     {
         _image = GameObject.FindGameObjectWithTag("UnitImage").GetComponent<Image>();
@@ -47,7 +49,7 @@ public class ChooseUnit : MonoBehaviour
         _unit = mousePosition;
     }
 
-    private void DisbandUnit()
+    public void DisbandUnit()
     {
         if (_gameUnit != null)
         {
