@@ -19,6 +19,8 @@ public class UnitView : MonoBehaviour
     [SerializeField]
     private ChooseUnit _player;
 
+    public UnitsData UnitData => _data;
+
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ChooseUnit>();

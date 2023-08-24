@@ -24,6 +24,7 @@ TagManager:
   - CityNameGenerator
   - SavesGenerator
   - Canvas
+  - QuestButton
   layers:
   - Default
   - TransparentFX

@@ -10,7 +10,13 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private Button _destroyCityButton;
     [SerializeField]
+    private bool _isUnitCreating;
+    [SerializeField]
+    private bool _isBuilderCreating;
+    [SerializeField]
     private GameUnit _builder;
+    [SerializeField]
+    private float _builderTimer;
     [SerializeField]
     private FoodGeneration _farm;
     [SerializeField]
@@ -41,6 +47,15 @@ public class ChooseCity : MonoBehaviour
         _destroyCityButton.onClick.AddListener(DestroyCity);
     }
 
+    public void Update()
+    {
+        if (_builderTimer > 0)
+        {
+            _builderTimer -= Time.deltaTime;
+        }
+        SpawnUnit();
+    }
+
     public void SaveCity(City city)
     {
         _city = city;
@@ -58,8 +73,26 @@ public class ChooseCity : MonoBehaviour
 
     public void CreateBuilder()
     {
-        Vector3 offset = new Vector3(2.5f, 0, 0);
-        GameUnit gameUnit = Instantiate(_builder, _city.transform.position + offset, _city.transform.rotation);
+        UnitsData builderData = _builder.GetComponent<UnitView>().UnitData;
+        if (_isUnitCreating == false && builderData.NeedFood <= _city.CityFoodCount && builderData.NeedProduction <= _city.CityProductionCount)
+        {
+            _builderTimer = builderData.UnitCreationTimer;
+            _city.SpendFood(builderData.NeedFood);
+            _city.SpendProduction(builderData.NeedProduction);
+            _isBuilderCreating = true;
+            _isUnitCreating = true;
+        }
+    }
+
+    private void SpawnUnit()
+    {
+        if (_builderTimer <= 0 && _isUnitCreating && _isBuilderCreating)
+        {
+            Vector3 offset = new Vector3(2.5f, 0, 0);
+            GameUnit gameUnit = Instantiate(_builder, _city.transform.position + offset, _city.transform.rotation);
+            _isBuilderCreating = false;
+            _isUnitCreating = false;
+        }
     }
 
     public void CreateFarm()

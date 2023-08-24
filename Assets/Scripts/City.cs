@@ -41,4 +41,14 @@ public class City : MonoBehaviour
     {
         _cityProductionCount += productionCount;
     }
+
+    public void SpendFood(int needFood)
+    {
+        _cityFoodCount -= needFood;
+    }
+
+    public void SpendProduction(int needProduction)
+    {
+        _cityProductionCount -= needProduction;
+    }
 }

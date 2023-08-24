@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResearchButton : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ResearchButton : MonoBehaviour
     private ResearchesData _data;
     [SerializeField]
     private CompleteResearches _completeResearches;
+    [SerializeField]
+    private Button _researchButton;
 
     private void Start()
     {
@@ -22,8 +25,8 @@ public class ResearchButton : MonoBehaviour
             {
                 if (_completeResearches.Researches[i].ResearchName != _data.ResearchName)
                 {
-                    print(1);
                     _completeResearches.AddResearch(_data);
+                    _researchButton.interactable = false;
                 }
                 else
                 {
@@ -34,11 +37,13 @@ public class ResearchButton : MonoBehaviour
         else if (_completeResearches.Researches.Count <= 0 && _data != null)
         {
             _completeResearches.AddResearch(_data);
+            _researchButton.interactable = false;
         }
     }
 
-    public void SetResearch(ResearchesData researchesData)
+    public void SetResearch(ResearchesData researchesData, Button researchButton)
     {
         _data = researchesData;
+        _researchButton = researchButton;
     }
 }

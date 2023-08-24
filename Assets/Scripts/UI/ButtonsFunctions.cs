@@ -7,6 +7,8 @@ public class ButtonsFunctions : MonoBehaviour
     [SerializeField]
     private GameObject _researchPanel;
     [SerializeField]
+    private GameObject _questPanel;
+    [SerializeField]
     private GameObject _cityPanel;
     [SerializeField]
     private GameObject _createUnitPanel;
@@ -18,6 +20,8 @@ public class ButtonsFunctions : MonoBehaviour
     private GameObject _builderPanel;
     [SerializeField]
     private bool _researchPanelOpen;
+    [SerializeField]
+    private bool _questPanelOpen;
     [SerializeField]
     private bool _menuOpen;
     [SerializeField]
@@ -33,6 +37,11 @@ public class ButtonsFunctions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && _researchPanelOpen)
         {
             CloseResearchPanel();
+            _researchPanelOpen = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && _questPanelOpen)
+        {
+            CloseQuestPanel();
             _researchPanelOpen = false;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && _menuOpen == false)
@@ -57,6 +66,18 @@ public class ButtonsFunctions : MonoBehaviour
     {
         _researchPanel.SetActive(false);
         _researchPanelOpen = false;
+    }
+
+    public void OpenQuestPanel()
+    {
+        _questPanel.SetActive(true);
+        _questPanelOpen = true;
+    }
+
+    public void CloseQuestPanel()
+    {
+        _questPanel.SetActive(false);
+        _questPanelOpen = false;
     }
 
     public void CloseCityPanel()

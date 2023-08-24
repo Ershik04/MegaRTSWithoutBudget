@@ -16,3 +16,6 @@ MonoBehaviour:
   _unitHealth: 10
   _unitDescription: Can build
   _unitImage: {fileID: 21300000, guid: 971315d72f000d84793e6e37c815c640, type: 3}
+  _unitCreationTimer: 10
+  _needFood: 100
+  _needProduction: 9

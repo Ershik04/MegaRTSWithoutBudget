@@ -25,7 +25,7 @@ public class ResearchesView : MonoBehaviour
 
     public void InitializeResearch()
     {
-        _researchButton.SetResearch(_data);
+        _researchButton.SetResearch(_data, gameObject.GetComponent<Button>());
         _label.text = _data.ResearchName;
         _description.text = _data.ResearchDescription;
     }

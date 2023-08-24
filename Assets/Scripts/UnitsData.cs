@@ -13,9 +13,18 @@ public class UnitsData : ScriptableObject
     private string _unitDescription;
     [SerializeField]
     private Sprite _unitImage;
+    [SerializeField]
+    private float _unitCreationTimer;
+    [SerializeField]
+    private int _needFood;
+    [SerializeField]
+    private int _needProduction;
 
     public string UnitName => _unitName;
     public int UnitHealth => _unitHealth;
     public string UnitDescription => _unitDescription;
     public Sprite UnitImage => _unitImage;
+    public float UnitCreationTimer => _unitCreationTimer;
+    public int NeedFood => _needFood;
+    public int NeedProduction => _needProduction;
 }
