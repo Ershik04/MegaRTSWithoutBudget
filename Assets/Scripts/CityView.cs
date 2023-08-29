@@ -29,6 +29,16 @@ public class CityView : MonoBehaviour
         _cityProductionCount = GameObject.FindGameObjectWithTag("CityProductionCount").GetComponent<TMP_Text>();
     }
 
+    public void Update()
+    {
+        if (_cityMenu.activeSelf)
+        {
+            _label.text = _city.CityName;
+            _cityFoodCount.text = _city.CityFoodCount.ToString();
+            _cityProductionCount.text = _city.CityProductionCount.ToString();
+        }
+    }
+
     private void OnMouseDown()
     {
         _cityMenu.SetActive(true);

@@ -3341,6 +3341,9 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194235}
+  - component: {fileID: 963194234}
+  - component: {fileID: 963194236}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
   - component: {fileID: 963194226}
@@ -3476,6 +3479,7 @@ MonoBehaviour:
   _maxFactoriesCount: 3
   _cityPanel: {fileID: 0}
   _unitPanel: {fileID: 0}
+  _player: {fileID: 0}
   _completeResearches: {fileID: 0}
   _factoriesResearch: {fileID: 11400000, guid: 5cf08b3f509daf04db69c3cd4c2b6364, type: 2}
 --- !u!114 &963194232
@@ -3504,6 +3508,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quests: []
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b421dde3e2ad47be4fb0d7f8a462d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cities: []
+--- !u!114 &963194235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b438863dddcb945a2c072a7ba3a37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _factoryQuest: {fileID: 11400000, guid: 547d9c69c0d96f7488e0006a1f817eac, type: 2}
+  _builder: {fileID: 0}
+--- !u!114 &963194236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc030aa9c049c7489be02f0bd701ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameUnits: []
 --- !u!1 &973507337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7000,6 +7045,7 @@ MonoBehaviour:
   _tile: {fileID: 0}
   _cityNameGenerator: {fileID: 280083583}
   _cities: []
+  _player: {fileID: 0}
   _playerPrefs: {fileID: 0}
 --- !u!1 &1783243751
 GameObject:
@@ -8065,9 +8111,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ResearchButton, Assembly-CSharp
-        m_MethodName: Research
+      - m_Target: {fileID: 1887043502}
+        m_TargetAssemblyTypeName: QuestButton, Assembly-CSharp
+        m_MethodName: CompleteQuest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8129,6 +8175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 0}
   _completeQuests: {fileID: 0}
+  _questButton: {fileID: 0}
 --- !u!1 &1888872001
 GameObject:
   m_ObjectHideFlags: 0

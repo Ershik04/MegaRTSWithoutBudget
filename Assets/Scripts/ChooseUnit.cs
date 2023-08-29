@@ -51,14 +51,17 @@ public class ChooseUnit : MonoBehaviour
 
     public void DisbandUnit()
     {
-        if (_gameUnit != null)
+        UnitsManager unitsManager = GetComponent<UnitsManager>();
+        if (_gameUnit != null && unitsManager.FindUnitInOwn(_gameUnit))
         {
+            GameUnit gameUnit = _gameUnit;
             _image.sprite = null;
             _label.text = "";
             _health.text = "";
             _description.text = "";
             Destroy(_gameUnit.gameObject);
             _gameUnit = null;
+            unitsManager.DeleteUnitFromOwn(gameUnit);
         }
     }
 }

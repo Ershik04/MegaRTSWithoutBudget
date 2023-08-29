@@ -23,9 +23,10 @@ public class QuestButton : MonoBehaviour
         {
             for (int i = 0; i < _completeQuests.Quests.Count; i++)
             {
-                if (_completeQuests.Quests[i].QuestName != _data.QuestName)
+                if (_completeQuests.Quests[i].QuestName != _data.QuestName && _data.IsQuestConditionComplited)
                 {
                     _completeQuests.AddQuest(_data);
+                    Rewards.AddReward(_data.RewardCount);
                     _questButton.interactable = false;
                 }
                 else
@@ -34,9 +35,10 @@ public class QuestButton : MonoBehaviour
                 }
             }
         }
-        else if (_completeQuests.Quests.Count <= 0 && _data != null)
+        else if (_completeQuests.Quests.Count <= 0 && _data != null && _data.IsQuestConditionComplited)
         {
             _completeQuests.AddQuest(_data);
+            Rewards.AddReward(_data.RewardCount);
             _questButton.interactable = false;
         }
     }

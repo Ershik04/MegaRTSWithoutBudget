@@ -34,6 +34,8 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private GameObject _unitPanel;
     [SerializeField]
+    private GameObject _player;
+    [SerializeField]
     private CompleteResearches _completeResearches;
     [SerializeField]
     private ResearchesData _factoriesResearch;
@@ -42,6 +44,7 @@ public class ChooseCity : MonoBehaviour
     {
         _cityPanel = GameObject.FindGameObjectWithTag("CityPanel");
         _unitPanel = GameObject.FindGameObjectWithTag("UnitPanel");
+        _player = GameObject.FindGameObjectWithTag("MainCamera");
         _completeResearches = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CompleteResearches>();
         _destroyCityButton = GameObject.FindGameObjectWithTag("DestroyCityButton").GetComponent<Button>();
         _destroyCityButton.onClick.AddListener(DestroyCity);
@@ -63,11 +66,15 @@ public class ChooseCity : MonoBehaviour
 
     private void DestroyCity()
     {
-        if (_city != null)
+        CityManager cityManager = GetComponent<CityManager>();
+        if (_city != null && cityManager.FindCityInOwn(_city))
         {
+            City city;
+            city = _city;
             Destroy(_city.gameObject);
             _city = null;
             _cityPanel.SetActive(false);
+            cityManager.DeleteCityFromOwn(city);
         }
     }
 
@@ -86,10 +93,12 @@ public class ChooseCity : MonoBehaviour
 
     private void SpawnUnit()
     {
+        UnitsManager unitsManager = _player.GetComponent<UnitsManager>();
         if (_builderTimer <= 0 && _isUnitCreating && _isBuilderCreating)
         {
             Vector3 offset = new Vector3(2.5f, 0, 0);
             GameUnit gameUnit = Instantiate(_builder, _city.transform.position + offset, _city.transform.rotation);
+            unitsManager.AddUnitInOwn(gameUnit);
             _isBuilderCreating = false;
             _isUnitCreating = false;
         }

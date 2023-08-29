@@ -22,7 +22,7 @@ public class Builder : MonoBehaviour
         _cityNameGenerator = GameObject.FindGameObjectWithTag("CityNameGenerator").GetComponent<CityNameGenerator>();
     }
 
-    public void BuildCity()
+    public City BuildCity()
     {
         GameObject city = Instantiate(_city, transform.position, transform.rotation);
         _cityGenerator.AddCity(city);
@@ -30,5 +30,6 @@ public class Builder : MonoBehaviour
         _cityNameGenerator.GenerateCityName(city);
         ChooseUnit chooseUnit = _player.GetComponent<ChooseUnit>();
         chooseUnit.DisbandUnit();
+        return city.GetComponent<City>();
     }
 }

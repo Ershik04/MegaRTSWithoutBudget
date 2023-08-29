@@ -130,6 +130,8 @@ public class ButtonsFunctions : MonoBehaviour
     public void BuildCity()
     {
         ChooseUnit chooseUnit = _player.GetComponent<ChooseUnit>();
+        CityManager cityManager = _player.GetComponent<CityManager>();
+        City city;
         if (chooseUnit.ChoosedUnit != null)
         {
             Builder builder;
@@ -137,7 +139,8 @@ public class ButtonsFunctions : MonoBehaviour
             isBuilder = chooseUnit.ChoosedUnit.TryGetComponent<Builder>(out builder);
             if (isBuilder)
             {
-                builder.BuildCity();
+                city = builder.BuildCity();
+                cityManager.AddCityInOwn(city);
             }
         }
     }

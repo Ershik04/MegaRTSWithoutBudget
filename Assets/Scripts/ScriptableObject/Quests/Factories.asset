@@ -15,3 +15,5 @@ MonoBehaviour:
   _questName: Factories
   _questDescription: Build 3 Factories
   _dependencies: {fileID: 0}
+  _isConditionCompleted: 0
+  _reward: 100
