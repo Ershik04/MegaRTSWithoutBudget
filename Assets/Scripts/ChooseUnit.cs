@@ -9,8 +9,6 @@ public class ChooseUnit : MonoBehaviour
     [SerializeField]
     private GameUnit _gameUnit;
     [SerializeField]
-    private MousePosition _unit;
-    [SerializeField]
     private Button _disbandButton;
     [SerializeField]
     private TMP_Text _label;
@@ -35,18 +33,15 @@ public class ChooseUnit : MonoBehaviour
 
     private void Update()
     {
-        if (_gameUnit != null && _unit != null)
+/*        if (_gameUnit != null && _unit != null)
         {
             _unit.MoveUnit(_gameUnit);
-        }
+        }*/
     }
 
     public void SaveUnit(GameUnit gameUnit)
     {
-        MousePosition mousePosition;
         _gameUnit = gameUnit;
-        mousePosition = _gameUnit.GetComponent<MousePosition>();
-        _unit = mousePosition;
     }
 
     public void DisbandUnit()

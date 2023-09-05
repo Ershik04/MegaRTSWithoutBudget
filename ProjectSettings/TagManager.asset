@@ -25,6 +25,7 @@ TagManager:
   - SavesGenerator
   - Canvas
   - QuestButton
+  - CityPowerCount
   layers:
   - Default
   - TransparentFX

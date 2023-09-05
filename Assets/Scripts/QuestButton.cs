@@ -25,9 +25,22 @@ public class QuestButton : MonoBehaviour
             {
                 if (_completeQuests.Quests[i].QuestName != _data.QuestName && _data.IsQuestConditionComplited)
                 {
-                    _completeQuests.AddQuest(_data);
-                    Rewards.AddReward(_data.RewardCount);
-                    _questButton.interactable = false;
+                    if (_data.Dependencies == null)
+                    {
+                        _completeQuests.AddQuest(_data);
+                        Rewards.AddReward(_data.RewardCount);
+                        _questButton.interactable = false;
+                    }
+                    else if (_data.Dependencies.IsQuestConditionComplited)
+                    {
+                        _completeQuests.AddQuest(_data);
+                        Rewards.AddReward(_data.RewardCount);
+                        _questButton.interactable = false;
+                    }
+                    else
+                    {
+                        print(_data.Dependencies + " ещё не выполнен");
+                    }
                 }
                 else
                 {
@@ -37,9 +50,22 @@ public class QuestButton : MonoBehaviour
         }
         else if (_completeQuests.Quests.Count <= 0 && _data != null && _data.IsQuestConditionComplited)
         {
-            _completeQuests.AddQuest(_data);
-            Rewards.AddReward(_data.RewardCount);
-            _questButton.interactable = false;
+            if (_data.Dependencies == null)
+            {
+                _completeQuests.AddQuest(_data);
+                Rewards.AddReward(_data.RewardCount);
+                _questButton.interactable = false;
+            }
+            else if (_data.Dependencies.IsQuestConditionComplited)
+            {
+                _completeQuests.AddQuest(_data);
+                Rewards.AddReward(_data.RewardCount);
+                _questButton.interactable = false;
+            }
+            else
+            {
+                print(_data.Dependencies + " ещё не выполнен");
+            }
         }
     }
 

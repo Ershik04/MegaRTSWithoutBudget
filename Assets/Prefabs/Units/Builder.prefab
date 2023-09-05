@@ -657,7 +657,6 @@ GameObject:
   - component: {fileID: 6570094110322288632}
   - component: {fileID: 6570094110322288633}
   - component: {fileID: 6570094110322288634}
-  - component: {fileID: 6570094110322288628}
   - component: {fileID: 8067595791655925505}
   m_Layer: 0
   m_Name: Builder
@@ -730,19 +729,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selected: 0
   _number: 0
---- !u!114 &6570094110322288628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6335649989979411615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91477e1b7067fea45a49cf0003032f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 1
 --- !u!114 &8067595791655925505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +745,7 @@ MonoBehaviour:
   _city: {fileID: 1058942464587211838, guid: e910d5d16c59ef5478a6412c8789e955, type: 3}
   _cityGenerator: {fileID: 0}
   _cityNameGenerator: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &7054394390941812073
 GameObject:
   m_ObjectHideFlags: 0

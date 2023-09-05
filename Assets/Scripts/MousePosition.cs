@@ -5,15 +5,25 @@ using UnityEngine;
 public class MousePosition : MonoBehaviour
 {
     [SerializeField]
-    private float _speed;
+    private GameObject _player;
 
-    public void MoveUnit(GameUnit gameUnit)
+    private void Start()
     {
-        if (Input.GetMouseButton(0))
+        _player = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private void OnMouseDown()
+    {
+        GameUnit gameUnit = _player.GetComponent<ChooseUnit>().ChoosedUnit;
+        if (gameUnit != null)
         {
-            Vector3 mouse = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.y);
-            var position = Camera.main.ScreenToWorldPoint(mouse);
-            gameUnit.transform.position = Vector3.MoveTowards(gameUnit.transform.position, position * _speed * Time.deltaTime, 1);
+            Vector3 position = new Vector3(transform.position.x, 0, transform.position.y);
+            gameUnit.MoveToPoint(position);
         }
     }
 }

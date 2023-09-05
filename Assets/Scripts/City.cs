@@ -22,6 +22,18 @@ public class City : MonoBehaviour
     public List<FoodGeneration> Farms => _farms;
     public List<ProductionGeneration> Factories => _factories;
 
+    private void Update()
+    {
+        if (_factories.Count > 0)
+        {
+            _cityPowerCount = _farms.Count * _factories.Count;
+        }
+        else
+        {
+            _cityPowerCount = _farms.Count;
+        }
+    }
+
     public void AddFarm(FoodGeneration farm)
     {
         _farms.Add(farm);

@@ -10,7 +10,7 @@ public class QuestData : ScriptableObject
     [SerializeField]
     private string _questDescription;
     [SerializeField]
-    private ResearchesData _dependencies;
+    private QuestData _dependencies;
     [SerializeField]
     private bool _isConditionCompleted;
     [SerializeField]
@@ -18,7 +18,7 @@ public class QuestData : ScriptableObject
 
     public string QuestName => _questName;
     public string QuestDescription => _questDescription;
-    public ResearchesData Dependencies => _dependencies;
+    public QuestData Dependencies => _dependencies;
     public bool IsQuestConditionComplited => _isConditionCompleted;
     public int RewardCount => _reward;
 

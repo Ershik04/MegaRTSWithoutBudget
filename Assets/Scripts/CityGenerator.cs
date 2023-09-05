@@ -35,7 +35,6 @@ public class CityGenerator : MonoBehaviour
             float zposition = Random.Range(-_tileSize, _tileSize);
             Vector3 position = new Vector3(xposition += _tile.transform.position.x, 0, zposition += _tile.transform.position.z);
             GameObject city = Instantiate(_template, position, gameObject.transform.rotation);
-            city.AddComponent<City>();
             city.tag = "City";
             AddCity(city);
             _cityNameGenerator.AddCity(city);

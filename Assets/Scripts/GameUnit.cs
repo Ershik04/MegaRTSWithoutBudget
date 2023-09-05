@@ -8,6 +8,8 @@ public class GameUnit : MonoBehaviour
     private bool _selected;
     [SerializeField]
     private int _number;
+    [SerializeField]
+    private float _speed;
 
     public bool Selected => _selected;
     public int Number => _number;
@@ -16,5 +18,11 @@ public class GameUnit : MonoBehaviour
     public void SelectUnit()
     {
         _selected = true;
+    }
+
+    public void MoveToPoint(Vector3 position)
+    {
+        print(position);
+        transform.position = Vector3.MoveTowards(transform.position, position * _speed * Time.deltaTime, 1);
     }
 }

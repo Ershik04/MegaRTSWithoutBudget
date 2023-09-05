@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a81d3c817d4bde4787d1ca98d9df33a, type: 3}
+  m_Name: Cities
+  m_EditorClassIdentifier: 
+  _questName: Cities
+  _questDescription: Build 5 Cities
+  _dependencies: {fileID: 11400000, guid: 33a81ff255dbb9d46a8cd203d969e586, type: 2}
+  _isConditionCompleted: 0
+  _reward: 500

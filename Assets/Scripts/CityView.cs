@@ -13,6 +13,8 @@ public class CityView : MonoBehaviour
     [SerializeField]
     private TMP_Text _cityProductionCount;
     [SerializeField]
+    private TMP_Text _cityPowerCount;
+    [SerializeField]
     private City _city;
     [SerializeField]
     private GameObject _cityMenu;
@@ -27,6 +29,7 @@ public class CityView : MonoBehaviour
         _label = GameObject.FindGameObjectWithTag("CityNameText").GetComponent<TMP_Text>();
         _cityFoodCount = GameObject.FindGameObjectWithTag("CityFoodCount").GetComponent<TMP_Text>();
         _cityProductionCount = GameObject.FindGameObjectWithTag("CityProductionCount").GetComponent<TMP_Text>();
+        _cityPowerCount = GameObject.FindGameObjectWithTag("CityPowerCount").GetComponent<TMP_Text>();
     }
 
     public void Update()
@@ -36,6 +39,7 @@ public class CityView : MonoBehaviour
             _label.text = _city.CityName;
             _cityFoodCount.text = _city.CityFoodCount.ToString();
             _cityProductionCount.text = _city.CityProductionCount.ToString();
+            _cityPowerCount.text = _city.CityPowerCount.ToString();
         }
     }
 

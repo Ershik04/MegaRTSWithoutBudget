@@ -154,8 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CityName: 
   _cityFoodCount: 0
+  _cityProductionCount: 0
   _cityPowerCount: 0
-  _builder: {fileID: 6570094110322288634, guid: b55e5ccabfb4ac5489fba15e5ba80900, type: 3}
+  _farms: []
+  _factories: []
 --- !u!114 &6728319895352881319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 0}
+  _cityFoodCount: {fileID: 0}
+  _cityProductionCount: {fileID: 0}
   _city: {fileID: 0}
   _cityMenu: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &1229782609658595165
 GameObject:
   m_ObjectHideFlags: 0
