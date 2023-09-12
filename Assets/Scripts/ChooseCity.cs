@@ -18,6 +18,12 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private float _builderTimer;
     [SerializeField]
+    private bool _isSoldierCreating;
+    [SerializeField]
+    private GameUnit _soldier;
+    [SerializeField]
+    private float _soldierTimer;
+    [SerializeField]
     private FoodGeneration _farm;
     [SerializeField]
     private ProductionGeneration _factory;
@@ -36,6 +42,8 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private GameObject _player;
     [SerializeField]
+    private CityManager _cityManager;
+    [SerializeField]
     private CompleteResearches _completeResearches;
     [SerializeField]
     private ResearchesData _factoriesResearch;
@@ -45,6 +53,7 @@ public class ChooseCity : MonoBehaviour
         _cityPanel = GameObject.FindGameObjectWithTag("CityPanel");
         _unitPanel = GameObject.FindGameObjectWithTag("UnitPanel");
         _player = GameObject.FindGameObjectWithTag("MainCamera");
+        _cityManager = _player.GetComponent<CityManager>();
         _completeResearches = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CompleteResearches>();
         _destroyCityButton = GameObject.FindGameObjectWithTag("DestroyCityButton").GetComponent<Button>();
         _destroyCityButton.onClick.AddListener(DestroyCity);
@@ -55,6 +64,10 @@ public class ChooseCity : MonoBehaviour
         if (_builderTimer > 0)
         {
             _builderTimer -= Time.deltaTime;
+        }
+        if (_soldierTimer > 0)
+        {
+            _soldierTimer -= Time.deltaTime;
         }
         SpawnUnit();
     }
@@ -91,6 +104,19 @@ public class ChooseCity : MonoBehaviour
         }
     }
 
+    public void CreateSoldier()
+    {
+        UnitsData soldierData = _soldier.GetComponent<UnitView>().UnitData;
+        if (_isUnitCreating == false && soldierData.NeedFood <= _city.CityFoodCount && soldierData.NeedProduction <= _city.CityProductionCount)
+        {
+            _soldierTimer = soldierData.UnitCreationTimer;
+            _city.SpendFood(soldierData.NeedFood);
+            _city.SpendProduction(soldierData.NeedProduction);
+            _isSoldierCreating = true;
+            _isUnitCreating = true;
+        }
+    }
+
     private void SpawnUnit()
     {
         UnitsManager unitsManager = _player.GetComponent<UnitsManager>();
@@ -100,6 +126,15 @@ public class ChooseCity : MonoBehaviour
             GameUnit gameUnit = Instantiate(_builder, _city.transform.position + offset, _city.transform.rotation);
             unitsManager.AddUnitInOwn(gameUnit);
             _isBuilderCreating = false;
+            _isUnitCreating = false;
+        }
+        else if (_soldierTimer <= 0 && _isUnitCreating && _isSoldierCreating)
+        {
+            Vector3 offset = new Vector3(2.5f, 0, 0);
+            GameUnit gameUnit = Instantiate(_soldier, _city.transform.position + offset, _city.transform.rotation);
+            unitsManager.AddUnitInOwn(gameUnit);
+            gameUnit.GetComponent<Soldier>().SetCityList(_cityManager.Cities);
+            _isSoldierCreating = false;
             _isUnitCreating = false;
         }
     }

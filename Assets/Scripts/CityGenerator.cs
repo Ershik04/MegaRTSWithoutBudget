@@ -19,6 +19,10 @@ public class CityGenerator : MonoBehaviour
     [SerializeField]
     private GameObject _player;
     [SerializeField]
+    private List<GameUnit> _soldiers;
+    [SerializeField]
+    private UnitsData _soldier;
+    [SerializeField]
     private SaveData _playerPrefs;
 
     public List<GameObject> Cities => _cities;

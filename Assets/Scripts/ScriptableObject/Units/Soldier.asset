@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0236be3618c5ba42b0fc9b6bab59648, type: 3}
+  m_Name: Soldier
+  m_EditorClassIdentifier: 
+  _unitName: Soldier
+  _unitHealth: 100
+  _unitDescription: Can attack enemy cities;
+  _unitImage: {fileID: 21300000, guid: 971315d72f000d84793e6e37c815c640, type: 3}
+  _unitCreationTimer: 10
+  _needFood: 200
+  _needProduction: 100

@@ -31,4 +31,18 @@ public class UnitsManager : MonoBehaviour
         }
         return isPlayerUnit;
     }
+
+    public int CountUnitByType(UnitsData unitType)
+    {
+        int unitsCount = 0;
+        UnitsData unitData;
+        for (int i = 0; i < _gameUnits.Count; i++)
+        {
+            if (_gameUnits[i].TryGetComponent<UnitsData>(out unitData) && unitType == unitData)
+            {
+                unitsCount++;
+            }
+        }
+        return unitsCount;
+    }
 }
