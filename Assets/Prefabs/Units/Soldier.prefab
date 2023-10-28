@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: -6550790198816590687}
   - component: {fileID: 2058140621720121589}
   - component: {fileID: 6295639469519997486}
+  - component: {fileID: 206636206067664602}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -562,7 +563,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selected: 0
   _number: 0
-  _speed: 0
+  _moveTime: 0
+  _maxMoveTime: 5
+--- !u!114 &206636206067664602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5277785551693462996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1732f09e5227ca4d86ac15003c7a49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCities: []
+  _maxDistanceToCity: 10
+  _damage: 1
+  _attackSpeed: 10
 --- !u!1 &7109495160700684249
 GameObject:
   m_ObjectHideFlags: 0

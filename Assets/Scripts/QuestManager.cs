@@ -12,6 +12,8 @@ public class QuestManager : MonoBehaviour
     private QuestData _builderQuest;
     [SerializeField]
     private QuestData _citiesQuest;
+    [SerializeField]
+    private QuestData _soldierQuest;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class QuestManager : MonoBehaviour
         FactoryQuestCondition();
         BuilderQuestCondition();
         CitiesQuestComplite();
+        SoldierQuestCondition();
     }
 
     private void FactoryQuestCondition()
@@ -59,6 +62,20 @@ public class QuestManager : MonoBehaviour
         {
             _citiesQuest.CompleteQuestCondition();
             return;
+        }
+    }
+
+    private void SoldierQuestCondition()
+    {
+        UnitsManager unitsManager = _player.GetComponent<UnitsManager>();
+        Soldier soldier;
+        for (int i = 0; i < unitsManager.GameUnits.Count; i++)
+        {
+            if (unitsManager.GameUnits[i].TryGetComponent<Soldier>(out soldier))
+            {
+                _soldierQuest.CompleteQuestCondition();
+                return;
+            }
         }
     }
 }

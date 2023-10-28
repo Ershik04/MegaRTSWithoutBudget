@@ -156,6 +156,7 @@ MonoBehaviour:
   _cityFoodCount: 0
   _cityProductionCount: 0
   _cityPowerCount: 0
+  _cityHealth: 100
   _farms: []
   _factories: []
 --- !u!114 &6728319895352881319

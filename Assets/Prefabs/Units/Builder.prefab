@@ -729,6 +729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selected: 0
   _number: 0
+  _moveTime: 0
+  _maxMoveTime: 5
 --- !u!114 &8067595791655925505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +748,7 @@ MonoBehaviour:
   _cityGenerator: {fileID: 0}
   _cityNameGenerator: {fileID: 0}
   _player: {fileID: 0}
+  _unitsManager: {fileID: 0}
 --- !u!1 &7054394390941812073
 GameObject:
   m_ObjectHideFlags: 0

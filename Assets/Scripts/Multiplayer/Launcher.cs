@@ -166,7 +166,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        PhotonNetwork.LoadLevel("SampleScene");
     }
 
     public void LeaveRoom()

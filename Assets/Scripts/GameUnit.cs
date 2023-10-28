@@ -9,20 +9,44 @@ public class GameUnit : MonoBehaviour
     [SerializeField]
     private int _number;
     [SerializeField]
-    private float _speed;
+    private float _moveTime;
+    [SerializeField]
+    private float _maxMoveTime;
+    private bool _canStartMove = false;
+    private Transform _tile;
 
     public bool Selected => _selected;
     public int Number => _number;
 
+    private void Update()
+    {
+        if (_moveTime > 0)
+        {
+            _moveTime -= Time.deltaTime;
+        }
+        MoveUnit();
+    }
 
     public void SelectUnit()
     {
         _selected = true;
     }
 
-    public void MoveToPoint(Vector3 position)
+    public void SetMaxMoveTime(Transform tile)
     {
-        print(position);
-        transform.position = Vector3.MoveTowards(transform.position, position * _speed * Time.deltaTime, 1);
+        _tile = tile;
+        Vector3 position = new Vector3(_tile.transform.position.x, 0, _tile.transform.position.z);
+        float distanceToPosition = Vector3.Distance(transform.position, position);
+        _moveTime = _maxMoveTime * distanceToPosition / 10;
+        _canStartMove = true;
+    }
+
+    public void MoveUnit()
+    {
+        if (_moveTime <= 0 && _canStartMove)
+        {
+            Vector3 position = new Vector3(_tile.transform.position.x, 0, _tile.transform.position.z);
+            gameObject.transform.position = position;
+        }
     }
 }

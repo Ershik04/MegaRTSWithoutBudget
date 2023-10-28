@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class CameraMovement : MonoBehaviourPunCallbacks
+public class Move : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject _camera;
@@ -12,19 +12,15 @@ public class CameraMovement : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        _camera = GameObject.FindGameObjectWithTag("Cube");
+
     }
 
     private void Update()
     {
-        if (photonView.IsMine)
-        {
-            Move();
-            CameraZoom();
-        }
+        Moving();
     }
 
-    private void Move()
+    private void Moving()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -41,18 +37,6 @@ public class CameraMovement : MonoBehaviourPunCallbacks
         if (Input.GetKey(KeyCode.A))
         {
             _camera.transform.position += Vector3.left * _moveSpeed;
-        }
-    }
-
-    private void CameraZoom()
-    {
-        if (Input.mouseScrollDelta == Vector2.up)
-        {
-            _camera.transform.position += Vector3.down;
-        }
-        else if (Input.mouseScrollDelta == Vector2.down)
-        {
-            _camera.transform.position += Vector3.up;
         }
     }
 }

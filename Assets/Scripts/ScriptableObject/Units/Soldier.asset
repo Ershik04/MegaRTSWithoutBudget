@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitName: Soldier
   _unitHealth: 100
-  _unitDescription: Can attack enemy cities;
+  _unitDescription: Can attack enemy cities.
   _unitImage: {fileID: 21300000, guid: 971315d72f000d84793e6e37c815c640, type: 3}
   _unitCreationTimer: 10
   _needFood: 200

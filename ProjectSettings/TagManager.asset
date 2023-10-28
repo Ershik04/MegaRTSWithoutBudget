@@ -26,6 +26,7 @@ TagManager:
   - Canvas
   - QuestButton
   - CityPowerCount
+  - Cube
   layers:
   - Default
   - TransparentFX

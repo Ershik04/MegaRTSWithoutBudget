@@ -34,7 +34,7 @@ public class CityView : MonoBehaviour
 
     public void Update()
     {
-        if (_cityMenu.activeSelf)
+        if (_cityMenu.activeSelf && _player.ChoosedCity == _city)
         {
             _label.text = _city.CityName;
             _cityFoodCount.text = _city.CityFoodCount.ToString();

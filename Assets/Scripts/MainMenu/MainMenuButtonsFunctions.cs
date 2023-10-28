@@ -9,6 +9,8 @@ public class MainMenuButtonsFunctions : MonoBehaviour
     private GameObject _singleplayerMenu;
     [SerializeField]
     private string _singleplayerScene;
+    [SerializeField]
+    private string _multiplayerMenu;
 
     public void OpenSingleplayerMenu()
     {
@@ -23,5 +25,10 @@ public class MainMenuButtonsFunctions : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene(_singleplayerScene);
+    }
+
+    public void OpenMultiplayerMenu()
+    {
+        SceneManager.LoadScene(_multiplayerMenu);
     }
 }

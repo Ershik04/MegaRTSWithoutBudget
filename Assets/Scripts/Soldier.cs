@@ -12,10 +12,12 @@ public class Soldier : MonoBehaviour
     private int _damage;
     [SerializeField]
     private float _attackSpeed;
+    [SerializeField]
+    private CityManager _player;
 
     private void Start()
     {
-        
+        _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CityManager>();
     }
 
     private void Update()
@@ -33,6 +35,28 @@ public class Soldier : MonoBehaviour
         _playerCities = cities;
     }
 
+    private void AttackCity(City city)
+    {
+        if (city.CityHealth > 0)
+        {
+            if (city.CityHealth - _damage <= 0)
+            {
+                CityManager cityManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CityManager>();
+                GameObject cityPanel = GameObject.FindGameObjectWithTag("CityPanel");
+                if (city != null && cityManager.FindCityInOwn(city))
+                {
+                    Destroy(city.gameObject);
+                    cityPanel.SetActive(false);
+                    cityManager.DeleteCityFromOwn(city);
+                }
+            }
+        }
+        else
+        {
+            city.DamageCity(_damage);
+        }
+    }
+
     IEnumerator FindCity()
     {
         GameObject[] cities = GameObject.FindGameObjectsWithTag("City");
@@ -40,11 +64,12 @@ public class Soldier : MonoBehaviour
         for (int i = 0; i < cities.Length; i++)
         {
             City city = cities[i].GetComponent<City>();
-            for (int a = 0; a < _playerCities.Count; a++)
+            if (!_player.FindCityInOwn(city))
             {
                 float distanceToCity = Vector3.Distance(transform.position, city.transform.position);
-                if (city != _playerCities[a] && distanceToCity <= _maxDistanceToCity)
+                if (distanceToCity <= _maxDistanceToCity)
                 {
+                    AttackCity(city);
                     print("Город " + city.CityName + " атакован");
                 }
             }

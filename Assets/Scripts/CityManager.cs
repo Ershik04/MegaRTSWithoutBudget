@@ -27,6 +27,7 @@ public class CityManager : MonoBehaviour
             if (_cities[i] == city)
             {
                 isPlayerCity = true;
+                return isPlayerCity;
             }
         }
         return isPlayerCity;

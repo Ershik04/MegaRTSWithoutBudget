@@ -22,8 +22,7 @@ public class MousePosition : MonoBehaviour
         GameUnit gameUnit = _player.GetComponent<ChooseUnit>().ChoosedUnit;
         if (gameUnit != null)
         {
-            Vector3 position = new Vector3(transform.position.x, 0, transform.position.y);
-            gameUnit.MoveToPoint(position);
+            gameUnit.SetMaxMoveTime(gameObject.transform);
         }
     }
 }

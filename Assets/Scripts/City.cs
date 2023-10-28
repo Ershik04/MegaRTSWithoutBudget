@@ -12,6 +12,8 @@ public class City : MonoBehaviour
     [SerializeField]
     private int _cityPowerCount;
     [SerializeField]
+    private int _cityHealth;
+    [SerializeField]
     private List<FoodGeneration> _farms;
     [SerializeField]
     private List<ProductionGeneration> _factories;
@@ -19,6 +21,7 @@ public class City : MonoBehaviour
     public int CityFoodCount => _cityFoodCount;
     public int CityProductionCount => _cityProductionCount;
     public int CityPowerCount => _cityPowerCount;
+    public int CityHealth => _cityHealth;
     public List<FoodGeneration> Farms => _farms;
     public List<ProductionGeneration> Factories => _factories;
 
@@ -62,5 +65,10 @@ public class City : MonoBehaviour
     public void SpendProduction(int needProduction)
     {
         _cityProductionCount -= needProduction;
+    }
+
+    public void DamageCity(int damage)
+    {
+        _cityHealth -= damage;
     }
 }

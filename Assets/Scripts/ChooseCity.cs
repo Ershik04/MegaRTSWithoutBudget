@@ -48,6 +48,8 @@ public class ChooseCity : MonoBehaviour
     [SerializeField]
     private ResearchesData _factoriesResearch;
 
+    public City ChoosedCity => _city;
+
     private void Start()
     {
         _cityPanel = GameObject.FindGameObjectWithTag("CityPanel");
