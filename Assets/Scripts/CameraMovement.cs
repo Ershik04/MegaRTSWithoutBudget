@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class CameraMovement : MonoBehaviourPunCallbacks
+public class CameraMovement : MonoBehaviour, IPunObservable
 {
     [SerializeField]
-    private GameObject _camera;
-    [SerializeField]
     private float _moveSpeed;
+    private PhotonView photonView;
 
     private void Start()
     {
-        _camera = GameObject.FindGameObjectWithTag("Cube");
+        photonView = GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -28,19 +27,19 @@ public class CameraMovement : MonoBehaviourPunCallbacks
     {
         if (Input.GetKey(KeyCode.W))
         {
-            _camera.transform.position += Vector3.forward * _moveSpeed;
+            transform.position += Vector3.forward * _moveSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            _camera.transform.position += Vector3.back * _moveSpeed;
+            transform.position += Vector3.back * _moveSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            _camera.transform.position += Vector3.right * _moveSpeed;
+            transform.position += Vector3.right * _moveSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _camera.transform.position += Vector3.left * _moveSpeed;
+            transform.position += Vector3.left * _moveSpeed;
         }
     }
 
@@ -48,11 +47,16 @@ public class CameraMovement : MonoBehaviourPunCallbacks
     {
         if (Input.mouseScrollDelta == Vector2.up)
         {
-            _camera.transform.position += Vector3.down;
+            transform.position += Vector3.down;
         }
         else if (Input.mouseScrollDelta == Vector2.down)
         {
-            _camera.transform.position += Vector3.up;
+            transform.position += Vector3.up;
         }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+
     }
 }

@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject _playerPrefab;
-    private GameObject _player;
-    public static PlayerSpawner instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    [SerializeField]
+    private Transform _playerCamera;
 
     private void Start()
     {
@@ -23,15 +18,11 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void SpawnPlayer()
     {
-        Vector3 spawnpoint = new Vector3(5f, 20f, 5f);
-        Quaternion rotation = new Quaternion(0, 0, 0, 0);
-        _player = PhotonNetwork.Instantiate(_playerPrefab.name, spawnpoint, rotation);
+        var player = PhotonNetwork.Instantiate(_playerPrefab.name, transform.position, Quaternion.identity);
+        _playerCamera.SetParent(player.transform.GetChild(0));
+        _playerCamera.transform.localPosition = Vector3.zero;
+        _playerCamera.transform.localRotation = Quaternion.identity;
     }
 }
